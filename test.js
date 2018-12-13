@@ -13,17 +13,5 @@ function gotsCallMaybe(expression, strm) {
     }
 }
 
-for(var i = 0; i < result.body.length; i++) {
-    if(result.body[i].type == "ExpressionStatement") {
-        if(result.body[i].expression.type == "SequenceExpression") {
-            var expressions = result.body[i].expression.expressions;
-            for(var j = 0; j < expressions.length; j++) {
-                gotsCallMaybe(expressions[j], "" + i + " " + j);
-            }
-        }else{
-            gotsCallMaybe(result.body[i], ""+i);
-        }
-    }else{
-        console.info(i + " " + result.body[i].type + " " + result.body[i].range);
-    }
-}
+gotsCallMaybe(result.body[0].expression.expressions[2], "" + 2 + " " + 2);
+
